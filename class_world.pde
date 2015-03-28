@@ -50,6 +50,8 @@ class World{
             text(temp, width/2-4.5*temp.length(), height*2/3+32);
             temp = "Press V To Discard";
             text(temp, width/2-4.5*temp.length(), height*2/3+48);
+            temp = "Press B To Cycle";
+            text(temp, width/2-4.5*temp.length(), height*2/3+64);
             
 
         }

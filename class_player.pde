@@ -32,7 +32,7 @@ class Player extends IGameObject{
 
         rgun = new MachineGun(this);
         raugs = new ArrayList();
-        rammo = new StandardAmmo();
+        rammo = new AccelAmmo();
 
         world.addObject(this);
     }

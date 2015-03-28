@@ -19,8 +19,8 @@ class Triple extends AAugment{
         roffset.set(offset);
         loffset.z += -.3;
         roffset.z += .3;
-        ammo.make(gun.owner, loffset, gun.damage, gun.velocity);
-        ammo.make(gun.owner, roffset, gun.damage, gun.velocity);
+        ammo.make(gun.owner, loffset, gun.damage, gun.velocity, gun.col);
+        ammo.make(gun.owner, roffset, gun.damage, gun.velocity, gun.col);
 
     }
 };

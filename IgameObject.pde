@@ -7,8 +7,6 @@ abstract class IGameObject{
     int team = 0;
 
     float size;
-    
-
 
     void tick(){}
     void render(){}
@@ -27,17 +25,21 @@ abstract class IGameObject{
         if(pos.x < 0){
             pos.x = 0;
             last.x = temp.x;
+            dir = -dir;
         } else if(pos.x > width) {
             pos.x = width;
             last.x = width+temp.x;
+            dir = -dir;
         }
 
         if(pos.y < 0){
             pos.y = 0;
             last.y = temp.y;
+            dir = -PI-dir;
         } else if(pos.y > height){
             pos.y = height;
             last.y = height+temp.y;
+            dir = -PI-dir;
         }
 
     }

@@ -1,6 +1,5 @@
 boolean upkey = false, downkey = false, leftkey = false, rightkey = false;
 boolean zkey = false;
-boolean xkey = false;
 
 
 void keyPressed(){
@@ -27,12 +26,38 @@ void keyPressed(){
             case 'Z':
             zkey = true;
             break;
-            case 'x':
-            xkey = true;
-            break;
-            case 'X':
-            xkey = true;
-            break;
+
+        }
+        if(world.pending.size() != 0){
+            GunComponentType temp = world.pending.get(0);
+            if(key == 'v' || key == 'V')
+                world.pending.remove(0);
+            else if(key == 'b' || key == 'B'){
+                world.pending.remove(0);
+                world.pending.add(temp);
+            }
+            else if(key == 'c' || key == 'C'){
+                if(temp instanceof AMain){
+                    mercury.lgun = (AMain)temp;
+                }
+                if(temp instanceof AAugment)
+                    if(!mercury.laugs.contains(temp))
+                        mercury.laugs.add((AAugment)temp);
+                if(temp instanceof AAmmo)
+                    mercury.lammo = (AAmmo)temp;
+                world.pending.remove(0);
+            }
+            else if(key == 'x' || key == 'X'){
+                if(temp instanceof AMain){
+                    mercury.rgun = (AMain)temp;
+                }
+                if(temp instanceof AAugment)
+                    if(!mercury.raugs.contains(temp))
+                        mercury.raugs.add((AAugment)temp);
+                if(temp instanceof AAmmo)
+                    mercury.rammo = (AAmmo)temp;
+                world.pending.remove(0);
+            }
         }
     }
 
@@ -62,12 +87,6 @@ void keyReleased(){
             break;
             case 'Z':
             zkey = false;
-            break;
-            case 'x':
-            xkey = false;
-            break;
-            case 'X':
-            xkey = false;
             break;
         }
     }

@@ -35,8 +35,16 @@ void setup(){
 
     mercury = new Player(new PVector(width/2, height/2));
 
+    new GTriple(new PVector(800, 300));
     new GTriple(new PVector(800, 400));
-    new GMachineGun(new PVector(400, 400));
+
+    new GStandardAmmo(new PVector(800, 500));
+    new GAccelAmmo(new PVector(800, 600));
+
+    new GMachineGun(new PVector(400, 300));
+    new GRailGun(new PVector(400, 400));
+    new GMachineGun(new PVector(400, 500));
+    new GRailGun(new PVector(400, 600));
 }
 
 void draw(){

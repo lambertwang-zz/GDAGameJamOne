@@ -11,6 +11,8 @@ abstract class AMain extends GunComponentType{
 
     int cooldown = 0;
 
+    color col;
+
     AMain(){}
 
     void tick(){
@@ -41,6 +43,7 @@ class MachineGun extends AMain{
         basedamage = 10;
         basevelocity = 8;
         resetStats();
+        col = color(255, 255, 0);
     }
 
     void render() {
@@ -58,7 +61,7 @@ class MachineGun extends AMain{
             for(AAugment a: augs){
                 a.modify(this, offset, ammo);
             }
-            ammo.make(owner, offset, damage, velocity);
+            ammo.make(owner, offset, damage, velocity, col);
             for(AAugment a: augs){
                 a.active(this, offset, ammo);
             }
@@ -74,19 +77,25 @@ class RailGun extends AMain{
         name = "A RailGun";
 
         owner = o;
-        basefirerate = 40;
-        basedamage = 50;
+        basefirerate = 30;
+        basedamage = 40;
         basevelocity = 16;
         resetStats();
+        col = color(255, 0, 0);
     }
 
     void render() {
         fill(32);
-        rect(0, -3, -8, 8);
-        fill(0, 96, 0);
-        rect(4, 6, -4, -8);
+        rect(1, 6, 3, 28);
+        rect(-1, 6, -3, 28);
+        fill(255, 0, 0);
+        rect(1, 6, -1, 26);
         fill(64);
-        rect(2, 6, -2, 24);
+        rect(4, -8, -4, 8);
+        fill(0);
+        ellipse(-4, -4, 4, 4);
+        ellipse(-4, 0, 4, 4);
+        ellipse(-4, 4, 4, 4);
     }
 
     void fire(ArrayList<AAugment> augs, AAmmo ammo, PVector offset){
@@ -94,7 +103,7 @@ class RailGun extends AMain{
             for(AAugment a: augs){
                 a.modify(this, offset, ammo);
             }
-            ammo.make(owner, offset, damage, velocity);
+            ammo.make(owner, offset, damage, velocity, col);
             for(AAugment a: augs){
                 a.active(this, offset, ammo);
             }
