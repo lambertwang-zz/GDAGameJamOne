@@ -4,13 +4,16 @@ abstract class IGameObject{
     PVector pos, last;
     float dir = 0;
 
+    int team = 0;
+
+    float size;
     
 
 
     void tick(){}
     void render(){}
 
-    void move(){
+    void move(float friction){
 
         PVector temp = new PVector(pos.x-last.x, pos.y-last.y);
 
@@ -38,5 +41,7 @@ abstract class IGameObject{
         }
 
     }
+
+    void collide(IGameObject o){}
 }
 

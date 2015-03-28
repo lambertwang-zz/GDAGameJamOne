@@ -18,27 +18,39 @@ World world;
 Player mercury;
 
 final float scale = 1;
-final float friction = 0.96;
 
 
 void setup(){
     size(1280, 720);
     noStroke();
     smooth();
+    rectMode(CORNERS);
 
     frameRate(60);
+
+    textFont(loadFont("Fixed_12.vlw"));
 
 
     world = new World();
 
     mercury = new Player(new PVector(width/2, height/2));
+
+    new GTriple(new PVector(800, 400));
+    new GMachineGun(new PVector(400, 400));
 }
 
 void draw(){
     world.draw();
+    fill(0);
+    text("Dir: "+mercury.dir, 100, 100);
+    text("FPS: "+frameRate, 100, 140);
 
-    text("Dir: "+mercury.dir, 200, 200);
-    text("FPS: "+frameRate, 200, 240);
+    stroke(0);
+    strokeWeight(1);
+    line(width/2, 0, width/2, height);
+        line(0, height/2, width, height/2);
+    noStroke();
+
 
 }
 
